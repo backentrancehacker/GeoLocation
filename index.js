@@ -24,7 +24,6 @@ app.get("/", (req, res) => {
 	res.sendFile('index.html')
 });
 app.post('/ip', (req, res) => {
-	console.log(req.clientIp)
 	fetch(`https://ipinfo.io/${req.clientIp}/json?token=0467ce20890c84`)
 	.then(res => res.json())
 	.then(json => res.send(JSON.stringify(json)))
