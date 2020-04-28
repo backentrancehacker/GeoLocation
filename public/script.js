@@ -19,6 +19,15 @@ const syntaxHighlight = (json) => {
         return `<span class="${cls}">${match}</span>`;
     });
 }
+
+/* IP Info API */
+fetch('/ip', {method: 'POST'})
+.then(res => res.json())
+.then(json => {
+	let syntax = syntaxHighlight(JSON.stringify(json, null, 4))
+	output(syntax, document.getElementById('ip-info'));
+})
+
 /* Who Is API */
 fetch('https://ip-geolocation-ipwhois-io.p.rapidapi.com/json/', {
     method: 'GET',
@@ -28,8 +37,8 @@ fetch('https://ip-geolocation-ipwhois-io.p.rapidapi.com/json/', {
 		'x-rapidapi-key': 'srclZqaa9imshAk9Xzz55u27oltLp1SqdiFjsnmva9PTpf2j3f'
 	}
 })
-.then((res) => res.json())
-.then((json) => {
+.then(res => res.json())
+.then(json => {
 	let syntax = syntaxHighlight(JSON.stringify(json, null, 4))
 	output(syntax, document.getElementById('who-is'));
 });
