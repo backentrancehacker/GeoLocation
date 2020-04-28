@@ -10,7 +10,8 @@ const util = require('./modules/util.js'),
 	fetch = require('node-fetch');
 
 // Engine
-app.set('views',  path.join(__dirname , '/public'))
+app
+.set('views',  path.join(__dirname , '/public'))
 
 // General
 app
@@ -21,8 +22,11 @@ app
 app.get("/", (req, res) => {
 	res.sendFile('index.html')
 });
+
 app.post('/ip', (req, res) => {
-	let ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress
+	let ip = (req.headers['x-forwarded-for'] || '').split(',')[0] 
+        || req.connection.remoteAddress;
+
 	fetch(`https://ipinfo.io/${ip}/json?token=0467ce20890c84`)
 	.then(res => res.json())
 	.then(json => res.send(JSON.stringify(json)))
