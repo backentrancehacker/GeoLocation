@@ -25,7 +25,18 @@ fetch('/ip', {method: 'POST'})
 .then(res => res.json())
 .then(json => {
 	let syntax = syntaxHighlight(JSON.stringify(json, null, 4))
-	output(syntax, document.getElementById('ip-info'));
+	output(syntax, document.getElementById('ip-info-server'));
+})
+
+fetch('https://jsonip.com/')
+.then(res => res.json())
+.then(json => {
+	fetch(`https://ipinfo.io/${json.ip}/json?token=0467ce20890c84`)
+	.then(res => res.json())
+	.then(json => {
+		let syntax = syntaxHighlight(JSON.stringify(json, null, 4))
+		output(syntax, document.getElementById('ip-info-client'));
+	})
 })
 
 /* Who Is API */

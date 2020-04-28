@@ -12,6 +12,7 @@ const util = require('./modules/util.js'),
 // Engine
 app
 .set('views',  path.join(__dirname , '/public'))
+.set('trust proxy',true); 
 
 // General
 app
@@ -24,13 +25,12 @@ app.get("/", (req, res) => {
 });
 
 app.post('/ip', (req, res) => {
-	let ip = (req.headers['x-forwarded-for'] || '').split(',')[0] 
-        || req.connection.remoteAddress;
-
-	fetch(`https://ipinfo.io/${ip}/json?token=0467ce20890c84`)
+	fetch(`https://ipinfo.io/${req.ip}/json?token=0467ce20890c84`)
 	.then(res => res.json())
 	.then(json => res.send(JSON.stringify(json)))
 })
+
+
 
 app.listen(8080);
 util.log('Started Server.')

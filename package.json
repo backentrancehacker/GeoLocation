@@ -1,18 +1,19 @@
 {
-  "name": "GeoLocation",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "ejs": "^3.1.2",
-    "express": "^4.17.1",
-    "node-fetch": "^2.6.0",
-    "request-ip": "^2.1.3"
-  }
+	"name": "GeoLocation",
+	"version": "1.0.0",
+	"description": "Three methods for finding location",
+	"main": "index.js",
+	"scripts": {
+		"start": "run index.js"
+	},
+	"keywords": [
+		"Geolocation"
+	],
+	"author": "Adcharity",
+	"license": "ISC",
+	"dependencies": {
+		"express": "^4.17.1",
+		"node-fetch": "^2.6.0",
+		"request-ip": "^2.1.3"
+	}
 }
