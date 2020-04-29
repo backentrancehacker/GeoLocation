@@ -130,7 +130,6 @@ function copy(text){
 	input.setSelectionRange(0, 99999); 
 	document.execCommand("copy");
 	input.remove()
-	new Alert('Copied Code!','good')
-
+	new Alert('Copied!','good')
 }
 
