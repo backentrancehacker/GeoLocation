@@ -62,7 +62,8 @@ function initialize() {
 		let json = {
 			latitude: `${latitude} °`,
 			longitude: `${longitude} °`,
-			link: `https://www.openstreetmap.org/#map=18/${latitude}/${longitude}`
+			open_street: `https://www.openstreetmap.org/#map=18/${latitude}/${longitude}`,
+			google_maps: `https://www.google.com/maps/@${latitude},${longitude}`
 		}
 		let syntax = syntaxHighlight(JSON.stringify(json, null, 4))
 		output(syntax, document.getElementById('geo-location'));

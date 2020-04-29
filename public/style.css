@@ -92,3 +92,18 @@ pre{
 	background-color: whitesmoke;
 	padding: 1em;
 }
+#attention{
+	font-size: 1.1em;
+	color: #fff;
+	background-color: red;
+	border-radius: 4px;
+	user-select: none;
+	overflow: hidden;
+	padding: 1em;
+	opacity: 0.9;
+	transition: height 0.3s ease, padding 0.3s ease;
+	position: -webkit-sticky;
+  	position: sticky;
+	top: 0.5em;
+	pointer-events: none;
+}
