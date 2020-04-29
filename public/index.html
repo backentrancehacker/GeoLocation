@@ -13,32 +13,27 @@
 	</div>
 <div class="content"><pre><code>
 function initialize() {
-	const success = (position) => {
+	function success (position) {
 		const latitude  = position.coords.latitude;
 		const longitude = position.coords.longitude;
-		let json = {
+		let location = {
 			latitude: `${latitude} °`,
 			longitude: `${longitude} °`,
 			link: `https://www.openstreetmap.org/#map=18/${latitude}/${longitude}`
 		}
-		return json
 	}
-
-	const error = () => {
-		let json = {
+	function error (){
+		let location = {
 			error: 'Could not locate user.'
 		}
-		let syntax = syntaxHighlight(JSON.stringify(json, null, 4))
-		output(syntax, document.getElementById('geo-location'));
 	}
-
 	if (!navigator.geolocation) {
 		return {
 			error: 'Could not locate user.'
 		}
 	} 
 	else {
-		return navigator.geolocation.getCurrentPosition(success, error);
+		navigator.geolocation.getCurrentPosition(success, error);
 	}
 }
 initialize();

@@ -30,7 +30,5 @@ app.post('/ip', (req, res) => {
 	.then(json => res.send(JSON.stringify(json)))
 })
 
-
-
 app.listen(8080);
 util.log('Started Server.')

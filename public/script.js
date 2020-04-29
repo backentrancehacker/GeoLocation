@@ -132,4 +132,3 @@ function copy(text){
 	input.remove()
 	new Alert('Copied!','good')
 }
-
