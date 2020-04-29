@@ -3,16 +3,101 @@
 <head>
 	<title>GeoLocation</title>
 	<link rel="stylesheet" href="/style.css" />
+	<script src="/alert.js" defer></script>
 	<script src="/script.js" defer></script>
 </head>
 <body>
 	<h1>HTML5 API</h1>
+	<div class="collapsible">
+		Code
+	</div>
+<div class="content"><pre><code>
+function initialize() {
+	const success = (position) => {
+		const latitude  = position.coords.latitude;
+		const longitude = position.coords.longitude;
+		let json = {
+			latitude: `${latitude} °`,
+			longitude: `${longitude} °`,
+			link: `https://www.openstreetmap.org/#map=18/${latitude}/${longitude}`
+		}
+		return json
+	}
+
+	const error = () => {
+		let json = {
+			error: 'Could not locate user.'
+		}
+		let syntax = syntaxHighlight(JSON.stringify(json, null, 4))
+		output(syntax, document.getElementById('geo-location'));
+	}
+
+	if (!navigator.geolocation) {
+		return {
+			error: 'Could not locate user.'
+		}
+	} 
+	else {
+		return navigator.geolocation.getCurrentPosition(success, error);
+	}
+}
+initialize();
+
+</code></pre></div>
+	<h2>Results</h2>
 	<div id="geo-location"></div>
+
 	<h1>IP Info API (Server IP)</h1>
+	<div class="collapsible">
+		Code
+	</div>
+<div class="content"><pre><code>
+fetch('https://geolocation.adcharity.repl.co/ip', {method: 'POST'})
+.then(res => res.json())
+
+</code></pre></div>
+
+	<h2>Results</h2>
 	<div id="ip-info-server"></div>
+
 	<h1>IP Info API (JSON IP)</h1>
+	<div class="collapsible">
+		Code
+	</div>
+<div class="content"><pre><code>
+async function jsonIp(){
+	let json = await fetch('https://jsonip.com/').then(res => res.json())
+	fetch(`https://ipinfo.io/${json.ip}/json?token=0467ce20890c84`)
+	.then(res => res.json())
+	.then(json => {
+		let syntax = syntaxHighlight(JSON.stringify(json, null, 4))
+		output(syntax, document.getElementById('ip-info-client'));
+	})
+}
+jsonIp()
+
+</code></pre></div>
+	<h2>Results</h2>
 	<div id="ip-info-client"></div>
+	
 	<h1>Who Is API</h1>
+	<div class="collapsible">
+		Code
+	</div>
+	
+<div class="content"><pre><code>
+fetch('https://ip-geolocation-ipwhois-io.p.rapidapi.com/json/', {
+    method: 'GET',
+    headers: { 
+		'Content-Type': 'application/json',
+		'x-rapidapi-host':'ip-geolocation-ipwhois-io.p.rapidapi.com',
+		'x-rapidapi-key': 'srclZqaa9imshAk9Xzz55u27oltLp1SqdiFjsnmva9PTpf2j3f'
+	}
+})
+.then(res => res.json())
+
+</code></pre></div>
+	<h2>Results</h2>
 	<div id="who-is"></div>
 </body>
 </html>

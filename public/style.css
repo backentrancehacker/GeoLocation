@@ -10,32 +10,28 @@ body{
 	margin: 0;
 	overflow-x: hidden;
 	background-color: #fff;
-	padding: 0;
+	padding: 1em;
 	display: flex;
 	flex-direction: column;
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-h1{
-	margin: 0;
-	padding: 0.5em;
-	font-weight: 400;
-}
+
 *, *:before, *:after {
 	-webkit-box-sizing: inherit;
 	-moz-box-sizing: inherit;
 	box-sizing: inherit;
 }
+h1, h2{
+	margin: 0.5em 0;
+	padding: 0;
+	font-weight: 400;
+}
+body h1:first-child{
+	margin: 0 0 0.5em 0;
+}
 ::selection{
 	background-color: silver;
 	color: #fff;
-}
-pre{
-	padding: 1em;
-	margin: 0 1em 1em 1em;
-	background-color: whitesmoke;
-	border: 2px solid gainsboro;
-	border-radius: 4px;
-	overflow-x: hidden;
 }
 code{
 	padding: 0;
@@ -58,4 +54,41 @@ code{
 }
 .key { 
 	color: red; 
+}
+.collapsible{
+	border: 2px solid dodgerblue;
+	color: dodgerblue;
+	border-radius: 4px;
+	padding: 0.7em;
+	font-size: 1.1em;
+	margin: 0;
+	cursor: pointer;
+	transition: background-color 0.3s ease, color 0.3s ease;
+	user-select: none;
+}
+.collapsible:hover{
+	background-color: dodgerblue;
+	color: white;
+}
+.content{
+	height: 0;
+	width: 100%;
+	margin: 0;
+	overflow: hidden;
+	border-radius: 4px;
+	border: 2px solid transparent;
+	transition: height 0.3s ease, border 0.3s ease, background-color 0.3s ease, margin 0.3s ease;
+	user-select: none;
+	cursor: pointer;
+}
+pre{
+	padding: 0 1em;
+	margin: 0;
+	overflow: hidden;
+	height: 100%;
+} 
+.code{
+	border: 2px solid gainsboro;
+	background-color: whitesmoke;
+	padding: 1em;
 }
