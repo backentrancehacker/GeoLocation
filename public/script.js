@@ -110,7 +110,6 @@ for(let i = 0; i < collaspsible.length; i ++){
 
 				copy(text)
 
-				new Alert('Copied Code!','good')
 			}
 		}
 		else{
@@ -124,11 +123,14 @@ for(let i = 0; i < collaspsible.length; i ++){
 	})
 }
 function copy(text){
-	let input = document.createElement('input');
+	let input = document.createElement('textarea');
 	input.value = text;
 	document.body.appendChild(input)
 	input.select();
 	input.setSelectionRange(0, 99999); 
 	document.execCommand("copy");
 	input.remove()
+	new Alert('Copied Code!','good')
+
 }
+
